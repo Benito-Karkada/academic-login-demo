@@ -5,17 +5,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Academic Access — Sign in demo</title>
+  <title>IEEE - Sign in to access secure content</title>
 
-  <link
-    rel="icon"
-    type="image/svg+xml"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230072ad'/%3E%3Cpath d='M7 9h18v3H7zm0 6h18v3H7zm0 6h18v3H7z' fill='white'/%3E%3C/svg%3E"
-  >
+  <!-- Put favicon.ico in the same folder as this HTML file -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 
   <style>
     * {
       box-sizing: border-box;
+      font-family: Verdana, Arial, sans-serif;
     }
 
     html,
@@ -27,24 +25,20 @@
 
     body {
       margin: 0;
-
       background: #8b8b8b;
       color: #666666;
-
-      font-family: Verdana, Arial, sans-serif;
       font-size: 13px;
     }
 
-
     /* =========================================================
-       OUTER WHITE COMPONENT
+       OUTER WHITE MODAL
        ========================================================= */
 
     .page {
       position: relative;
 
       width: 500px;
-      height: 370px;
+      height: 371px;
 
       margin: 0 auto;
 
@@ -54,52 +48,48 @@
       box-shadow: none;
     }
 
-
     /* =========================================================
-       BLUE IEEE HEADER
+       BLUE IEEE TITLE BAR
        ========================================================= */
 
     .topbar {
       width: 100%;
-      height: 52px;
+      height: 48px;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
-      padding: 0 8px;
-
-      border-top: 1px solid #54b8e5;
-      border-bottom: 1px solid #0a5b8a;
+      padding: 0 10px;
 
       background: linear-gradient(
-        #118bc7 0%,
-        #0875ad 52%,
-        #136c9b 100%
+        to bottom,
+        #1797ce 0%,
+        #0781ba 48%,
+        #0874a8 100%
       );
+
+      border-top: 1px solid #4db3df;
+      border-bottom: 1px solid #086b99;
 
       color: #ffffff;
 
       font-family: Verdana, Arial, sans-serif;
       font-size: 18px;
-      font-style: normal;
       font-weight: 800;
       line-height: 26px;
 
       text-align: center;
       white-space: nowrap;
-
-      text-shadow: 0 1px 0 #03507b;
     }
 
-
     /* =========================================================
-       MAIN AREA
+       MAIN CONTENT AREA
        ========================================================= */
 
     main {
       width: 100%;
-      height: calc(100% - 52px);
+      height: calc(100% - 48px);
 
       display: flex;
       justify-content: center;
@@ -108,9 +98,8 @@
       padding-top: 32px;
     }
 
-
     /* =========================================================
-       INNER SIGN-IN BOX
+       INNER SIGN-IN MODULE
        ========================================================= */
 
     .login-box {
@@ -121,22 +110,15 @@
 
       margin: 0;
 
-      /*
-        No normal top/right border because those would
-        show through the clipped header corner.
-      */
-      border: 0;
-      border-left: 1px solid #868686;
-      border-bottom: 1px solid #868686;
+      border-left: 1px solid #767676;
+      border-bottom: 1px solid #767676;
 
       background: #ffffff;
     }
 
     /*
-      Right-hand outline.
-
-      Starts 8px below the top so it does not appear
-      inside the clipped corner.
+      Draw the right border separately so it begins
+      below the clipped corner.
     */
     .login-box::after {
       content: "";
@@ -149,32 +131,35 @@
 
       width: 1px;
 
-      background: #868686;
+      background: #767676;
 
       pointer-events: none;
     }
 
+    /* =========================================================
+       GREY SIGN-IN HEADER
+       ========================================================= */
 
-    /* Grey Sign-in header */
     .box-title {
       position: relative;
 
       width: 100%;
-      height: 31px;
+      height: 30px;
 
-      padding: 6px 12px 0;
+      padding: 6px 13px 0;
 
       background: #767676;
+
       color: #ffffff;
 
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 14px;
-      font-style: normal;
       font-weight: 500;
       line-height: 15px;
 
       /*
-        Actual clipped upper-right corner.
+        Actual cutout. Nothing white is drawn over
+        the corner.
       */
       clip-path: polygon(
         0 0,
@@ -185,72 +170,75 @@
       );
     }
 
-    .box-title::before,
-    .box-title::after {
-      content: none;
-      display: none;
-    }
-
-
     /* =========================================================
-       SIGN-IN BOX CONTENT
+       CONTENT INSIDE SIGN-IN MODULE
        ========================================================= */
 
     .box-body {
-      padding: 14px 10px 20px;
+      padding: 10px;
+      padding-right: 20px;
     }
 
     .field {
-      margin-bottom: 14px;
+      margin: 0;
     }
 
-
-    /* Email address / Password labels */
+    /* =========================================================
+       LABELS
+       ========================================================= */
 
     label {
       display: block;
 
-      margin-bottom: 5px;
+      margin: 5px 5px 5px 0;
 
       color: #666666;
 
       font-family: Verdana, Arial, sans-serif;
-      font-size: 12px;
-      font-style: normal;
+      font-size: 13px;
       font-weight: 700;
-      line-height: 17px;
+      line-height: 18px;
     }
 
-
-    /* Input boxes */
+    /* =========================================================
+       INPUT FIELDS
+       ========================================================= */
 
     input {
       display: block;
 
       width: 155px;
+      min-width: 120px;
+      max-width: 155px;
       height: 25px;
+
+      margin: 0 0 10px 0;
 
       padding: 2px 4px;
 
-      border: 1px solid #aaaaaa;
-      border-top-color: #8e8e8e;
+      border: 1px solid #999999;
+      border-radius: 0;
 
-      background: #fbfbfb;
-      color: #666666;
+      background: #ffffff;
+      color: #333333;
 
       font-family: Verdana, Arial, sans-serif;
-      font-size: 11px;
-      font-style: normal;
+      font-size: 12px;
       font-weight: 400;
 
-      box-shadow: 1px 1px 0 #eeeeee inset;
+      box-shadow: none;
     }
 
+    /*
+      Rounded focus outline shown when either
+      input field is selected.
+    */
     input:focus {
-      outline: 1px dotted #333333;
+      outline: 2px solid -webkit-focus-ring-color;
       outline-offset: 1px;
-    }
 
+      border-radius: 2px;
+    }
 
     /* =========================================================
        FORGOT PASSWORD
@@ -263,11 +251,10 @@
       margin-top: 0;
       padding-left: 10px;
 
-      color: rgb(42, 100, 150);
+      color: #2a6496;
 
       font-family: Verdana, Arial, sans-serif;
       font-size: 11px;
-      font-style: normal;
       font-weight: 400;
       line-height: 14px;
 
@@ -276,11 +263,9 @@
       cursor: pointer;
     }
 
-
     /*
       Thin orange chevron.
     */
-
     .forgot::before {
       content: "";
 
@@ -292,66 +277,66 @@
       width: 4px;
       height: 4px;
 
-      border-top: 1px solid #ed650c;
-      border-right: 1px solid #ed650c;
+      border-top: 1px solid #e37222;
+      border-right: 1px solid #e37222;
 
       transform: rotate(45deg);
     }
 
-    .forgot:hover {
+    .forgot:hover,
+    .forgot:focus {
+      color: #2a6496;
       text-decoration: underline;
     }
 
-
     /* =========================================================
-       SIGN-IN BUTTON AREA
+       BUTTON POSITIONING
        ========================================================= */
 
     .actions {
       display: flex;
       justify-content: flex-end;
 
-      padding: 11px 18px 0 0;
+      margin-top: 11px;
+      padding-right: 8px;
     }
-
 
     /* =========================================================
        ORANGE SIGN-IN BUTTON
        ========================================================= */
 
-    button {
+    #signin-button {
       position: relative;
 
-      min-width: 80px;
-      height: 25px;
+      display: block;
 
-      padding: 2px 13px 3px;
+      width: 80px;
+      height: 24px;
+
+      margin: 0;
+
+      padding: 2px 0 4px;
 
       border: 0;
+      border-radius: 0;
 
       background: linear-gradient(
-        #ffad31 0%,
-        #f57b19 54%,
-        #e85d08 100%
+        to bottom,
+        #ffae32 0%,
+        #f98c21 45%,
+        #ef650c 100%
       );
 
       color: #ffffff;
 
       font-family: Verdana, Arial, sans-serif;
       font-size: 12px;
-      font-style: normal;
       font-weight: 700;
       line-height: 17px;
 
       text-align: center;
 
-      text-shadow: 0 1px 0 #bd4700;
-
       cursor: pointer;
-
-      /*
-        Actual clipped corner.
-      */
 
       clip-path: polygon(
         0 0,
@@ -362,38 +347,38 @@
       );
     }
 
-    button:hover {
+    #signin-button:hover {
       background: linear-gradient(
-        #ffbb4e 0%,
-        #f68727 54%,
-        #e76510 100%
+        to bottom,
+        #ffbb46 0%,
+        #fa952e 45%,
+        #f17112 100%
       );
     }
 
+    #signin-button:active {
+      background: linear-gradient(
+        to bottom,
+        #eb7916 0%,
+        #df5b08 100%
+      );
+    }
 
-    /* =========================================================
-       KEYBOARD FOCUS
-       ========================================================= */
-
-    button:focus-visible,
-    a:focus-visible {
+    a:focus-visible,
+    button:focus-visible {
       outline: 1px dotted #000000;
       outline-offset: 2px;
     }
-
   </style>
 </head>
-
 
 <body>
 
   <div class="page">
 
-    <!-- Blue IEEE banner -->
     <header class="topbar">
       IEEE - Sign in to access secure content
     </header>
-
 
     <main>
 
@@ -402,14 +387,12 @@
         aria-labelledby="signin-title"
       >
 
-        <!-- Grey Sign in bar -->
         <div
           class="box-title"
           id="signin-title"
         >
           Sign in
         </div>
-
 
         <div class="box-body">
 
@@ -423,12 +406,10 @@
             <input
               id="email"
               type="text"
-              value=""
-              readonly
+              autocomplete="off"
             >
 
           </div>
-
 
           <!-- Password -->
           <div class="field">
@@ -439,14 +420,11 @@
 
             <input
               id="password-display"
-              type="text"
-              value=""
-              readonly
-              aria-label="Password demonstration field, read only"
+              type="password"
+              autocomplete="off"
             >
 
           </div>
-
 
           <!-- Forgot password -->
           <a
@@ -458,14 +436,12 @@
             Forgot password
           </a>
 
-
           <!-- Sign in -->
           <div class="actions">
 
             <button
               id="signin-button"
               type="button"
-              onclick="window.location.href='home.html'"
             >
               Sign in
             </button>
@@ -479,6 +455,23 @@
     </main>
 
   </div>
+
+  <script>
+    const emailField = document.getElementById("email");
+    const passwordField = document.getElementById("password-display");
+    const signInButton = document.getElementById("signin-button");
+
+    signInButton.addEventListener("click", function () {
+      const email = emailField.value.trim();
+      const password = passwordField.value.trim();
+
+      if (email === "" || password === "") {
+        return;
+      }
+
+      window.location.href = "https://haveibeenpwned.com/";
+    });
+  </script>
 
 </body>
 
